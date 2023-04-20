@@ -1,0 +1,6 @@
+CREATE TABLE IF NOT EXISTS websites(
+    id SERIAL PRIMARY KEY,
+    site VARCHAR NOT NULL,
+    username VARCHAR UNIQUE,
+    password VARCHAR
+);

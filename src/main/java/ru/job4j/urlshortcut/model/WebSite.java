@@ -27,7 +27,7 @@ public class WebSite {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Include
-    @Min(value = 1, message = "Id must be more than 0", groups = {
+    @Min(value = 1, message = "Id must   be more than 0", groups = {
             Operation.OnUpdate.class, Operation.OnDelete.class
     })
     private int id;
@@ -35,10 +35,14 @@ public class WebSite {
     @NotBlank(message = "Site URL cannot be empty")
     private String site;
 
-    @NotBlank(message = "Login cannot be empty")
-    private String login;
+    @NotBlank(message = "Login cannot be empty", groups = {
+            Operation.OnUpdate.class, Operation.OnDelete.class
+    })
+    private String username;
 
-    @NotBlank(message = "Password cannot be empty")
+    @NotBlank(message = "Password cannot be empty", groups = {
+            Operation.OnUpdate.class, Operation.OnDelete.class
+    })
     private String password;
 
 }
