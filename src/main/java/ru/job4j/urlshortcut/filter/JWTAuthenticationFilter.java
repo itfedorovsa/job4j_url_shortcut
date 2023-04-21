@@ -9,7 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.job4j.urlshortcut.model.WebSite;
+import ru.job4j.urlshortcut.model.Website;
 
 import javax.servlet.FilterChain;
 import javax.servlet.http.HttpServletRequest;
@@ -22,7 +22,7 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 
 /**
  * JWTAuthentication filter
- * Catches the User
+ * Catches the user
  *
  * @author itfedorovsa (itfedorovsa@gmail.com)
  * @version 1.0
@@ -58,8 +58,8 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     public Authentication attemptAuthentication(HttpServletRequest req, HttpServletResponse res)
             throws AuthenticationException {
         try {
-            WebSite creds = new ObjectMapper()
-                    .readValue(req.getInputStream(), WebSite.class);
+            Website creds = new ObjectMapper()
+                    .readValue(req.getInputStream(), Website.class);
 
             return auth.authenticate(
                     new UsernamePasswordAuthenticationToken(

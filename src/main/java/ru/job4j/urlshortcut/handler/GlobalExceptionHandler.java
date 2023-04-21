@@ -14,7 +14,7 @@ import java.util.HashMap;
 
 /**
  * Global exception handler class
- * Handles all NullPointerException that occur in all controllers
+ * Handles all NullPointerException and IllegalArgumentException that occur in all controllers
  *
  * @author itfedorovsa (itfedorovsa@gmail.com)
  * @version 1.0
@@ -31,7 +31,7 @@ public class GlobalExceptionHandler {
         this.objectMapper = objectMapper;
     }
 
-    @ExceptionHandler(value = {NullPointerException.class})
+    @ExceptionHandler(value = {NullPointerException.class, IllegalArgumentException.class})
     public void handleException(Exception e, HttpServletRequest request, HttpServletResponse response) throws IOException {
         response.setStatus(HttpStatus.BAD_REQUEST.value());
         response.setContentType("application/json");

@@ -19,7 +19,7 @@ import ru.job4j.urlshortcut.repository.SimpleUserDetailsService;
 import static ru.job4j.urlshortcut.filter.JWTAuthenticationFilter.SIGN_UP_URL;
 
 /**
- * Web config
+ * Web Security config
  *
  * @author itfedorovsa (itfedorovsa@gmail.com)
  * @version 1.0
@@ -28,7 +28,9 @@ import static ru.job4j.urlshortcut.filter.JWTAuthenticationFilter.SIGN_UP_URL;
 @EnableWebSecurity
 @AllArgsConstructor
 public class WebSecurity extends WebSecurityConfigurerAdapter {
+
     private SimpleUserDetailsService userDetailsService;
+
     private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     /**

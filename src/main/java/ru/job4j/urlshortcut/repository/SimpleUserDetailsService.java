@@ -6,7 +6,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import ru.job4j.urlshortcut.model.WebSite;
+import ru.job4j.urlshortcut.model.Website;
+import ru.job4j.urlshortcut.service.WebsiteService;
 
 import static java.util.Collections.emptyList;
 
@@ -21,10 +22,10 @@ import static java.util.Collections.emptyList;
 @AllArgsConstructor
 public class SimpleUserDetailsService implements UserDetailsService {
 
-    private WebsiteRepository websiteRepository;
+    private WebsiteService websiteService;
 
     /**
-     * Load WebSite by username
+     * Load Website by username
      *
      * @param username username
      * @return UserDetails UserDetails
@@ -32,7 +33,7 @@ public class SimpleUserDetailsService implements UserDetailsService {
      */
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        WebSite user = websiteRepository.findByUsername(username);
+        Website user = websiteService.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException(username);
         }

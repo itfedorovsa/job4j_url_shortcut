@@ -21,7 +21,7 @@ import javax.validation.constraints.NotBlank;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
-@Table(name = "references")
+@Table(name = "refers")
 public class Reference {
 
     @Id
@@ -36,8 +36,13 @@ public class Reference {
     @Column(name = "original_url")
     private String originalUrl;
 
-    @NotBlank(message = "Short URL cannot be empty")
+    @NotBlank(message = "Short URL cannot be empty", groups = {
+            Operation.OnUpdate.class, Operation.OnDelete.class
+    })
     @Column(name = "shortened_url")
     private String shortenedUrl;
+
+    @Column(name = "call_counter")
+    private int callCounter;
 
 }

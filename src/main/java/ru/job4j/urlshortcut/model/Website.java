@@ -9,7 +9,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 
 /**
- * WebSite model
+ * Website model
  *
  * @author itfedorovsa (itfedorovsa@gmail.com)
  * @version 1.0
@@ -22,7 +22,7 @@ import javax.validation.constraints.NotBlank;
 @AllArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Table(name = "websites")
-public class WebSite {
+public class Website {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

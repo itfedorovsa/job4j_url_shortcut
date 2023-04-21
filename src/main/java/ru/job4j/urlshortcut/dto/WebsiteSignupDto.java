@@ -1,9 +1,10 @@
 package ru.job4j.urlshortcut.dto;
 
-import lombok.*;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
- * WebSite sign up DTO
+ * Website sign up DTO
  *
  * @author itfedorovsa (itfedorovsa@gmail.com)
  * @version 1.0
@@ -11,10 +12,7 @@ import lombok.*;
  */
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
-public class WebSiteSignupDto {
+public class WebsiteSignupDto {
 
     private boolean isSignedUp;
 
