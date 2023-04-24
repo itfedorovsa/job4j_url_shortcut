@@ -16,6 +16,8 @@ import ru.job4j.urlshortcut.validation.Operation;
 
 import javax.validation.Valid;
 
+import static ru.job4j.urlshortcut.util.RandomValue.generateRandomValue;
+
 /**
  * Registration controller
  *
@@ -26,7 +28,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/users")
 @AllArgsConstructor
-public class RegistrationController implements RandomValueController {
+public class Registration {
 
     private WebsiteService websiteService;
 

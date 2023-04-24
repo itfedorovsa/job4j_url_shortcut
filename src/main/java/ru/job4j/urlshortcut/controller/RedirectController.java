@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.job4j.urlshortcut.dto.OriginalReferenceDto;
 import ru.job4j.urlshortcut.dto.ShortReferenceDto;
 import ru.job4j.urlshortcut.model.Reference;
 import ru.job4j.urlshortcut.service.ReferenceService;
@@ -15,6 +14,7 @@ import ru.job4j.urlshortcut.service.ReferenceService;
 import javax.transaction.Transactional;
 import javax.validation.Valid;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 /**
  * Redirect controller
@@ -32,13 +32,12 @@ public class RedirectController {
 
     @Transactional
     @GetMapping("/redirect")
-    public ResponseEntity<OriginalReferenceDto> convertUrl(@Valid @RequestBody ShortReferenceDto shortReferenceDto) {
-        Reference refByShortenedUrl = referenceService.findByShortenedUrl(shortReferenceDto.getShortenedUrl())
-                .orElseThrow(() -> new NoSuchElementException("Couldn't find the Reference by this Shortened Url."));
-        OriginalReferenceDto originalReferenceDto = new OriginalReferenceDto();
-        originalReferenceDto.setOriginalUrl(refByShortenedUrl.getOriginalUrl());
-        referenceService.incrementCounter(refByShortenedUrl.getId());
-        return new ResponseEntity<>(originalReferenceDto, HttpStatus.FOUND);
+    public ResponseEntity<String> convertUrl(@Valid @RequestBody ShortReferenceDto shortReferenceDto) {
+        Optional<Reference> refByShortenedUrl = referenceService.findByShortenedUrl(shortReferenceDto.getShortenedUrl());
+        if (refByShortenedUrl.isEmpty()) {
+            throw new NoSuchElementException("Couldn't find the Reference by this Shortened Url.");
+        }
+        return new ResponseEntity<>(refByShortenedUrl.get().getOriginalUrl(), HttpStatus.TEMPORARY_REDIRECT);
     }
 
 }

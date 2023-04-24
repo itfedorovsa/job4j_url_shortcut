@@ -15,6 +15,8 @@ import ru.job4j.urlshortcut.validation.Operation;
 
 import javax.validation.Valid;
 
+import static ru.job4j.urlshortcut.util.RandomValue.generateRandomValue;
+
 /**
  * Reference converter controller
  *
@@ -25,7 +27,7 @@ import javax.validation.Valid;
 @RestController
 @RequestMapping("/converters")
 @AllArgsConstructor
-public class RefConverterController implements RandomValueController {
+public class RefConverter {
 
     private ReferenceService referenceService;
 
