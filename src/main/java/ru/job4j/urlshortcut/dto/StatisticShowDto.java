@@ -16,8 +16,14 @@ import lombok.Setter;
 @AllArgsConstructor
 public class StatisticShowDto {
 
+    /**
+     * Original url
+     */
     private String originalUrl;
 
+    /**
+     * Counter of number of link calls
+     */
     private int callCounter;
 
 }

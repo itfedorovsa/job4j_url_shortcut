@@ -30,10 +30,22 @@ import static ru.job4j.urlshortcut.util.RandomValue.generateRandomValue;
 @AllArgsConstructor
 public class Registration {
 
+    /**
+     * WebsiteService implementation
+     */
     private WebsiteService websiteService;
 
+    /**
+     * BCryptPasswordEncoder
+     */
     private BCryptPasswordEncoder encoder;
 
+    /**
+     * Website registration
+     *
+     * @param website Website. Type {@link ru.job4j.urlshortcut.model.Website}
+     * @return ResponseEntity<WebsiteSignupDto>
+     */
     @PostMapping("/sign-up")
     @Validated(Operation.OnCreate.class)
     public ResponseEntity<WebsiteSignupDto> signUp(@Valid @RequestBody Website website) {

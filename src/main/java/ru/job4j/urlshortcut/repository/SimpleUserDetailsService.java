@@ -22,13 +22,16 @@ import static java.util.Collections.emptyList;
 @AllArgsConstructor
 public class SimpleUserDetailsService implements UserDetailsService {
 
+    /**
+     * WebsiteService implementation
+     */
     private WebsiteService websiteService;
 
     /**
      * Load Website by username
      *
-     * @param username username
-     * @return UserDetails UserDetails
+     * @param username Username. Type {@link java.lang.String}
+     * @return UserDetails UserDetails. Type {@link org.springframework.security.core.userdetails.UserDetails}
      * @throws UsernameNotFoundException UsernameNotFoundException
      */
     @Override

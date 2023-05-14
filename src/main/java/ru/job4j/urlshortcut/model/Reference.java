@@ -24,6 +24,9 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "refers")
 public class Reference {
 
+    /**
+     * Id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Include
@@ -32,16 +35,25 @@ public class Reference {
     })
     private int id;
 
+    /**
+     * Original url
+     */
     @NotBlank(message = "Original URL cannot be empty")
     @Column(name = "original_url")
     private String originalUrl;
 
+    /**
+     * Shortened url
+     */
     @NotBlank(message = "Short URL cannot be empty", groups = {
             Operation.OnUpdate.class, Operation.OnDelete.class
     })
     @Column(name = "shortened_url")
     private String shortenedUrl;
 
+    /**
+     * Counter of number of link calls
+     */
     @Column(name = "call_counter")
     private int callCounter;
 

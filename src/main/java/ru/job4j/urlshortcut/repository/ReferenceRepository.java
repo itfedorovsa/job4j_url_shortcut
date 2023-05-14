@@ -18,12 +18,29 @@ import java.util.Optional;
  */
 public interface ReferenceRepository extends CrudRepository<Reference, Integer> {
 
-    Optional<Reference> findByShortenedUrl(@NonNull String shortenedUrl);
-
+    /**
+     * Find all references
+     *
+     * @return List of Reference. Type {@link java.util.List<ru.job4j.urlshortcut.model.Reference>}
+     */
     List<Reference> findAll();
 
+    /**
+     * Find reference by short url
+     *
+     * @param shortenedUrl Short url. Type {@link java.lang.String}
+     * @return Optional of Reference. Type {@link java.util.Optional<ru.job4j.urlshortcut.model.Reference>}
+     */
+    Optional<Reference> findByShortenedUrl(@NonNull String shortenedUrl);
+
+    /**
+     * Increment the counter of the number of link calls
+     *
+     * @param referenceId Reference id. Type {@link java.lang.Integer}
+     * @return int
+     */
     @Modifying
     @Query(value = "UPDATE refers SET call_counter = call_counter + 1 WHERE id = ?1", nativeQuery = true)
-    int incrementCounter(Integer id);
+    int incrementCounter(Integer referenceId);
 
 }

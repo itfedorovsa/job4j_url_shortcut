@@ -25,8 +25,16 @@ import java.util.List;
 @AllArgsConstructor
 public class StatisticController {
 
+    /**
+     * ReferenceService implementation
+     */
     private ReferenceService referenceService;
 
+    /**
+     * Shows statistics on the number of requests for each link
+     *
+     * @return ResponseEntity<List<StatisticShowDto>>
+     */
     @GetMapping("/common-statistic")
     public ResponseEntity<List<StatisticShowDto>> commonStatistic() {
         List<Reference> allRefs = referenceService.findAll();

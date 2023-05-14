@@ -15,7 +15,7 @@ public class Main {
 
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
-        System.out.println("WARNING: Visual interface is not implemented. See the project instruction in ReadMe");
+        System.out.println("WARNING: Visual interface is not implemented. See the project instruction in ReadMe.md");
     }
 
 }

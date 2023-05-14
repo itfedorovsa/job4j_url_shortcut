@@ -24,6 +24,9 @@ import javax.validation.constraints.NotBlank;
 @Table(name = "websites")
 public class Website {
 
+    /**
+     * Id
+     */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Include
@@ -32,14 +35,23 @@ public class Website {
     })
     private int id;
 
+    /**
+     * Website name
+     */
     @NotBlank(message = "Site URL cannot be empty")
     private String site;
 
+    /**
+     * Username (login)
+     */
     @NotBlank(message = "Login cannot be empty", groups = {
             Operation.OnUpdate.class, Operation.OnDelete.class
     })
     private String username;
 
+    /**
+     * Password
+     */
     @NotBlank(message = "Password cannot be empty", groups = {
             Operation.OnUpdate.class, Operation.OnDelete.class
     })

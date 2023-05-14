@@ -14,6 +14,9 @@ import lombok.Setter;
 @Setter
 public class ShortReferenceDto {
 
+    /**
+     * Shortened url
+     */
     private String shortenedUrl;
 
 }

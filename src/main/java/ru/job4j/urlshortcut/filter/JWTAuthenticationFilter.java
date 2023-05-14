@@ -31,6 +31,9 @@ import static com.auth0.jwt.algorithms.Algorithm.HMAC512;
 @AllArgsConstructor
 public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
+    /**
+     * Secret key
+     */
     public static final String SECRET = "SecretKeyToGenJWTs";
 
     /**
@@ -38,12 +41,24 @@ public class JWTAuthenticationFilter extends UsernamePasswordAuthenticationFilte
      */
     public static final long EXPIRATION_TIME = 864_000_000;
 
+    /**
+     * Token prefix
+     */
     public static final String TOKEN_PREFIX = "Bearer ";
 
+    /**
+     * Authorization header
+     */
     public static final String HEADER_STRING = "Authorization";
 
+    /**
+     * Sign up url
+     */
     public static final String SIGN_UP_URL = "/users/sign-up";
 
+    /**
+     * AuthenticationManager
+     */
     private AuthenticationManager auth;
 
     /**

@@ -17,13 +17,28 @@ import ru.job4j.urlshortcut.repository.WebsiteRepository;
 @AllArgsConstructor
 public class SimpleWebsiteService implements WebsiteService {
 
+    /**
+     * WebsiteRepository implementation
+     */
     private WebsiteRepository websiteRepository;
 
+    /**
+     * Save website
+     *
+     * @param website Website. Type {@link ru.job4j.urlshortcut.model.Website}
+     * @return Website. Type {@link ru.job4j.urlshortcut.model.Website}
+     */
     @Override
     public Website save(Website website) {
         return websiteRepository.save(website);
     }
 
+    /**
+     * Find website by username
+     *
+     * @param username Username. Type {@link java.lang.String}
+     * @return Website. Type {@link ru.job4j.urlshortcut.model.Website}
+     */
     @Override
     public Website findByUsername(@NonNull String username) {
         return websiteRepository.findByUsername(username);

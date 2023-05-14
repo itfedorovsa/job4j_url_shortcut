@@ -19,6 +19,12 @@ import java.util.stream.Collectors;
 @ControllerAdvice
 public class ValidationControllerAdvice {
 
+    /**
+     * Handles the validation
+     *
+     * @param e MethodArgumentNotValidException throws if validation is failed
+     * @return ResponseEntity<?>
+     */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handle(MethodArgumentNotValidException e) {
         return ResponseEntity.badRequest().body(

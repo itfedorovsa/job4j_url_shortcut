@@ -30,6 +30,12 @@ public class RedirectController {
 
     private ReferenceService referenceService;
 
+    /**
+     * Convert url from short to long
+     *
+     * @param shortReferenceDto ShortReferenceDto. Type {@link ru.job4j.urlshortcut.dto.ShortReferenceDto}
+     * @return ResponseEntity<String>
+     */
     @Transactional
     @GetMapping("/redirect")
     public ResponseEntity<String> convertUrl(@Valid @RequestBody ShortReferenceDto shortReferenceDto) {
@@ -37,6 +43,7 @@ public class RedirectController {
         if (refByShortenedUrl.isEmpty()) {
             throw new NoSuchElementException("Couldn't find the Reference by this Shortened Url.");
         }
+        referenceService.incrementCounter(refByShortenedUrl.get().getId());
         return new ResponseEntity<>(refByShortenedUrl.get().getOriginalUrl(), HttpStatus.TEMPORARY_REDIRECT);
     }
 

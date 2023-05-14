@@ -29,8 +29,17 @@ import static ru.job4j.urlshortcut.util.RandomValue.generateRandomValue;
 @AllArgsConstructor
 public class RefConverter {
 
+    /**
+     * ReferenceService implementation
+     */
     private ReferenceService referenceService;
 
+    /**
+     * Convert url from long to short
+     *
+     * @param reference Reference. Type {@link ru.job4j.urlshortcut.model.Reference}
+     * @return ResponseEntity<ShortReferenceDto>
+     */
     @PostMapping("/convert-url")
     @Validated(Operation.OnCreate.class)
     public ResponseEntity<ShortReferenceDto> convertUrl(@Valid @RequestBody Reference reference) {

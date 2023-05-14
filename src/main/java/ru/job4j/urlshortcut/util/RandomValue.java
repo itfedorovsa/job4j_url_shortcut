@@ -16,7 +16,7 @@ public class RandomValue {
     /**
      * Generate random value (for login, password etc.)
      *
-     * @return String
+     * @return String. Type {@link java.lang.String}
      */
     public static String generateRandomValue(int symbols) {
         final String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";

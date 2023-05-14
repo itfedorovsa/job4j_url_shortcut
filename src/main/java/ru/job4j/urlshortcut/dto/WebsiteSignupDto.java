@@ -14,10 +14,19 @@ import lombok.Setter;
 @Setter
 public class WebsiteSignupDto {
 
+    /**
+     * Signed up / Isn't signed up
+     */
     private boolean isSignedUp;
 
+    /**
+     * Username (login)
+     */
     private String username;
 
+    /**
+     * Password
+     */
     private String password;
 
 }
